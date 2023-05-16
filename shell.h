@@ -22,3 +22,14 @@ void exec(char **argv, char **envp, int d);
 char *location(char *command, int *m);
 void *sanitize(char **argv);
 void *sanitize_malloc(size_t size);
+char _putchar(char c);
+void _puts(char *str);
+void cd_cmd(char **argv);
+void execmd(char *command, char **argv, char **envp);
+int _setenv(const char *name, const char *value, int overwrite);
+int _unsetenv(const char *name);
+int com(char *command, char **argv, int d);
+int _atoi(char *str);
+
+
+#endif
