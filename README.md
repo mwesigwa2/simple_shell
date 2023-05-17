@@ -7,7 +7,30 @@ or terminal.
 
 ## The shell basically has two modes of interaction:
 * Interactive mode.
+	* In the interactive mode the shell project is run in the format of:
+	```console
+	$ ./hsh
+	```
+	After the program executable has been run, the program will keep running in an infinite loop until the user exits it by either the use of the "exit" command or using the EOF trigger which is "Ctr + D" or "Ctr + C" which imply end of file whish interm exits the program.
+	The output is in the form:
+
+	```console
+	Ubuntu: $ ./hsh
+	#cisfun: $ ls
+	main.c shell.h execv.c
+	#cisfun: $ exit
+	Ubuntu: $
+	```
+
+	This executable is only available after the program code has been executed successfully
+
 * Non interactive mode.
+	* In the non interactive mode, after compilation of the prgram files to form an executable file, the program is run in the format of:
+	```console
+	$ echo "/bin/ls" | ./hsh
+	```
+
+	After this has been run, the program runs once and exits to the normal or run tim environment.
 
 In this two modes, there is a similar implementation of the different aspects of the shell.
 
@@ -43,3 +66,21 @@ On creating the child process, both the child and the parent process execute the
 This is the most important part of the project whereby inorder for any program to run smoothly, there should not be any memory leaks that can be checked with programs like Valgrind. 
 
 Mem leaks are basically leaks in memory that occur due to failure of the program to free certain allocated memory or freeing more memory than it has been allocated. This inturn causes inefficiency in the running of the program.
+
+
+## Common errors made in the ALX simple shell project
+* Outputtting a prompt in the non interactive mode. This results in out put of a second prompt provided by the checker which then creates more string output than expected by the checker
+* Forgetting to clear memory leaks in the program and this is the key component of efficient code.
+
+Inorder to check for C program mem leaks you can use a program called vagrind
+
+Valgrind code is run in the format of:
+
+```console
+$ valgrind --leak-check=yes ./hsh
+
+```
+Valgrind can be made efficient to detect lines in the code blocks and funtions with errors with soecific lines when the C code is compiled in the way of:
+```console
+$ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh -g
+```
