@@ -30,6 +30,8 @@ int _setenv(const char *name, const char *value, int overwrite);
 int _unsetenv(const char *name);
 int com(char *command, char **argv, int d);
 int _atoi(char *str);
-
+int _strlen(const char *str);
+char *_strchr(const char *s, char c);
+void err(char **argv, int d);
 
 #endif
